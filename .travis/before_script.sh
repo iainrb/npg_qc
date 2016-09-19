@@ -4,11 +4,6 @@ set -e -x
 
 IRODS_VERSION=${IRODS_VERSION:=4.1.9}
 
-before_script_common() {
-    #source $TRAVIS_BUILD_DIR/.travis/irods_paths.sh
-    return
-}
-
 before_script_4_1_x() {
     sudo -E -u postgres createuser -D -R -S irods
     sudo -E -u postgres createdb -O irods ICAT
@@ -34,7 +29,6 @@ before_script_4_1_x() {
 case $IRODS_VERSION in
 
     4.1.9)
-        before_script_common
         before_script_4_1_x
         ;;
 
